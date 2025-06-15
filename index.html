@@ -10,14 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <!-- Chosen Palette: Warm Harmony (inspired by nature and spirituality - light sand, warm taupe, soft brown, with a gentle gold accent) -->
-    <!-- Application Structure Plan: A single-page, vertical scrolling journey in 6 thematic sections: 1. The Search (immersive intro), 2. The Disconnect (interactive problem statement), 3. The Secret (book reveal), 4. Rabbi Biography, 5. Book Excerpts (new section), 6. The Journey (interactive exploration of benefits), 7. The Invitation (clear call to action). This narrative structure is chosen over a simple text dump to guide the user emotionally, build curiosity, and make the book's abstract concepts tangible and explorable, enhancing engagement and understanding. -->
+    <!-- Application Structure Plan: A single-page, vertical scrolling journey in 8 thematic sections: 1. The Search (immersive intro), 2. The Disconnect (interactive problem statement), 3. The Secret (book reveal), 4. Rabbi Biography, 5. Book Excerpts, 6. Other Books (new section), 7. The Journey (interactive exploration of benefits), 8. Videos (new section), 9. The Invitation (clear call to action). This narrative structure is chosen over a simple text dump to guide the user emotionally, build curiosity, and make the book's abstract concepts tangible and explorable, enhancing engagement and understanding. -->
     <!-- Visualization & Content Choices: 
     - The Search: Goal: Evoke emotion. Method: Full-screen section with animated text (JS) and a subtle Canvas background of floating light particles to create a contemplative mood. No library.
     - The Disconnect: Goal: Compare. Method: A grid of "stress" words using HTML/Tailwind that flashes and disappears (JS/CSS animation) to reveal a calm state. No library.
     - The Secret: Goal: Inform. Method: Interactive book cover reveal using HTML/CSS/JS. A Canvas ripple effect on click enhances the feeling of discovery. No library.
     - Rabbi Biography: Goal: Inform/Build Credibility. Method: Dedicated section with image and textual biography. No library.
     - Book Excerpts: Goal: Inform/Engage. Method: Text blocks with styling to highlight quotes, encouraging a direct taste of the book. No library.
+    - Other Books: Goal: Inform/Expand Offering. Method: Grid of book cards with updated titles and images, with adjusted flexbox to align "Buy on WhatsApp" buttons at the bottom. No library.
     - The Journey: Goal: Organize/Inform. Method: Interactive HTML/Tailwind cards for book's benefits ('Peace', 'Purpose'). JS handles the click-to-reveal mechanism showing more text. No library.
+    - Videos: Goal: Engage/Provide Multimedia. Method: Embedded responsive video players (YouTube iframe).
     - The Invitation: Goal: Action. Method: Simple, clear HTML/Tailwind layout.
     - Justification: These choices create an interactive, emotional journey that translates the video script's feeling into a web experience without using complex libraries or static graphics. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
@@ -99,6 +101,23 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             margin-bottom: 2rem;
         }
+        /* For responsive video embed */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body class="bg-[#F5F5DC] text-[#4A238]">
@@ -115,7 +134,9 @@
             <a href="#the-secret" class="text-[#6F6253] hover:text-[#C19A6B] font-semibold transition-colors duration-200 px-2 py-1 rounded-md">הסוד</a>
             <a href="#rabbi-bio" class="text-[#6F6253] hover:text-[#C19A6B] font-semibold transition-colors duration-200 px-2 py-1 rounded-md">הרב המחבר</a>
             <a href="#book-excerpts" class="text-[#6F6253] hover:text-[#C19A6B] font-semibold transition-colors duration-200 px-2 py-1 rounded-md">טעימה מהספר</a>
+            <a href="#other-books" class="text-[#6F6253] hover:text-[#C19A6B] font-semibold transition-colors duration-200 px-2 py-1 rounded-md">ספרים נוספים</a>
             <a href="#the-journey" class="text-[#6F6253] hover:text-[#C19A6B] font-semibold transition-colors duration-200 px-2 py-1 rounded-md">המסע</a>
+            <a href="#videos" class="text-[#6F6253] hover:text-[#C19A6B] font-semibold transition-colors duration-200 px-2 py-1 rounded-md">סרטונים</a>
             <a href="#cta" class="bg-[#C19A6B] text-white hover:bg-[#a98458] font-bold transition-colors duration-300 px-3 py-1 rounded-md">הזמינו עכשיו</a>
         </div>
     </nav>
@@ -217,8 +238,50 @@
             </div>
         </section>
 
+        <!-- Section: Other Books (ספרים נוספים) -->
+        <section id="other-books" class="bg-[#EDECE6] py-20 px-4">
+            <div class="max-w-6xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-12 text-[#4A238]">ספרים נוספים</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Book 1 - הסוד שבך -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
+                        <img src="https://i.imgur.com/AC82HLO.jpg" 
+                             alt="[Image of הסוד שבך book cover]" 
+                             class="rounded-lg mb-4 w-48 h-auto object-cover">
+                        <h3 class="text-2xl font-bold text-[#C19A6B] mb-2">הסוד שבך</h3>
+                        <p class="text-lg text-[#6F6253] mb-4 flex-grow">תקציר קצר על הסוד שבך. כיצד הוא תורם למסע הרוחני.</p>
+                        <a href="https://wa.me/972527660731" target="_blank" class="bg-[#C19A6B] text-white text-base font-bold py-2 px-6 rounded-full shadow-md hover:bg-[#a98458] transition-colors duration-300">
+                            קנה בווטסאפ
+                        </a>
+                    </div>
+                    <!-- Book 2 - הרצון שבך -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
+                        <img src="https://i.imgur.com/AcBMfhn.jpeg" 
+                             alt="[Image of כריכת הספר הרצון שבך]" 
+                             class="rounded-lg mb-4 w-48 h-auto object-cover">
+                        <h3 class="text-2xl font-bold text-[#C19A6B] mb-2">הרצון שבך</h3>
+                        <p class="text-lg text-[#6F6253] mb-4 flex-grow">תקציר קצר על הספר הרצון שבך, עם דגש על נושאים שונים או הרחבות.</p>
+                        <a href="https://wa.me/972527660731" target="_blank" class="bg-[#C19A6B] text-white text-base font-bold py-2 px-6 rounded-full shadow-md hover:bg-[#a98458] transition-colors duration-300">
+                            קנה בווטסאפ
+                        </a>
+                    </div>
+                    <!-- Book 3 - האור שבך -->
+                     <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
+                        <img src="https://i.imgur.com/lAQTaEW.jpeg" 
+                             alt="[Image of כריכת הספר האור שבך]" 
+                             class="rounded-lg mb-4 w-48 h-auto object-cover">
+                        <h3 class="text-2xl font-bold text-[#C19A6B] mb-2">האור שבך</h3>
+                        <p class="text-lg text-[#6F6253] mb-4 flex-grow">תקציר קצר על הספר האור שבך, והקשר שלו למסרים הכוללים.</p>
+                        <a href="https://wa.me/972527660731" target="_blank" class="bg-[#C19A6B] text-white text-base font-bold py-2 px-6 rounded-full shadow-md hover:bg-[#a98458] transition-colors duration-300">
+                            קנה בווטסאפ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Section 4: The Journey (המסע) -->
-        <section id="the-journey" class="bg-[#EDECE6] py-20 px-4">
+        <section id="the-journey" class="py-20 px-4">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-[#4A238]">צאו למסע אל עומק הנשמה</h2>
                 <p class="text-xl text-center text-[#6F6253] mb-12">הספר הוא מורה דרך. גלו את הכלים שהוא מציע לחיים שלווים ומלאי משמעות.</p>
@@ -261,6 +324,23 @@
                              <p class="text-[#4A238] leading-relaxed">"זהו ספר על חיבור. חיבור בלתי מתפשר אל האני האמיתי, אל הנשמה, ומתוך כך - אל הבורא ואל הבריאה כולה."</p>
                              <p class="mt-4 text-sm font-semibold text-[#4A238]">לחצו לסגירה</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Videos (סרטונים) -->
+        <section id="videos" class="bg-[#F5F5DC] py-20 px-4">
+            <div class="max-w-5xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-12 text-[#4A238]">סרטונים</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Primary video embed -->
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/hWpCuWd6U6s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <!-- Secondary video embed -->
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/rXB-96SkHn0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -311,7 +391,9 @@
                     this.y += this.speedY;
                     if (this.size > 0.1) this.size -= 0.01;
                     if (this.x < 0 || this.x > heroCanvas.width) this.speedX *= -1;
-                    if (this.y < 0 || this.y > heroCanvas.height) this.speedY *= -1;
+                    if (this.y < 0 || this.y > heroCanvas.height) {
+                        this.speedY *= -1;
+                    }
                 }
                 draw() {
                     heroCtx.fillStyle = `rgba(193, 154, 107, ${this.opacity})`;
@@ -329,7 +411,7 @@
             initParticles();
 
             function animateParticles() {
-                heroCtx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+                heroCtx.clearRect(0, 0, heroCanvas.width, heroCtx.height);
                 for (let i = 0; i < particles.length; i++) {
                     particles[i].update();
                     particles[i].draw();
@@ -390,7 +472,7 @@
             });
 
             function animateRipples() {
-                rippleCtx.clearRect(0, 0, rippleCanvas.width, rippleCanvas.height);
+                rippleCtx.clearRect(0, 0, rippleCanvas.width, rippleCtx.height);
                 for (let i = 0; i < ripples.length; i++) {
                     let r = ripples[i];
                     r.radius += 2;
